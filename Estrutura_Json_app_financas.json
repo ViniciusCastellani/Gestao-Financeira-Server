@@ -1,0 +1,67 @@
+{
+  "idPessoa": 1,
+  "nome": "Lucas Marques",
+  "email": "exemploEmail@hotmail.com",
+  "senha": "123456",
+  "balancoGeral": 4000,
+  "todasFaturas": 850,
+  "listaFluxoFinanceiro": [
+    {
+      "idFluxo": 1,
+      "tipo": "Renda",
+      "descricao": "Salario",
+      "nomeBanco": "Santander",
+      "valor": 3000,
+      "data": "31/06/2023"
+    },
+    {
+      "idFluxo": 2,
+      "tipo": "Despesa",
+      "descricao": "Contas de Junho",
+      "nomeBanco": "Santander",
+      "valor": 500,
+      "data": "30/06/2023"
+    },
+    {
+      "idFluxo": 3,
+      "tipo": "Renda",
+      "descricao": "Aluguel",
+      "nomeBanco": "Santander",
+      "valor": 800,
+      "data": "15/07/2023"
+    },
+    {
+      "idFluxo": 4,
+      "tipo": "Despesa",
+      "descricao": "Supermercado",
+      "nomeBanco": "Santander",
+      "valor": 200,
+      "data": "28/07/2023"
+    },
+    {
+      "idFluxo": 5,
+      "tipo": "Renda",
+      "descricao": "Salario",
+      "nomeBanco": "Santander",
+      "valor": 3000,
+      "data": "31/08/2023"
+    },
+    {
+      "idFluxo": 6,
+      "tipo": "Despesa",
+      "descricao": "Gasolina",
+      "nomeBanco": "Santander",
+      "valor": 150,
+      "data": "25/08/2023"
+    }
+  ],
+  "listaMetas": [
+    {
+      "idMeta": 1,
+      "tituloMeta": "Viajem",
+      "descricaoMeta": "Viajar para Franca",
+      "valorMeta": 5000,
+      "dataPrazo": "30/05/2026"
+    }
+  ]
+}
