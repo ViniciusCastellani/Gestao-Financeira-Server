@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+h1 {
+	color: red;
+}
+
+.header th {
+    margin-bottom: 10px; /* Ajuste o valor conforme necessário */
+    padding-bottom: 10px; /* Espaçamento interno */
+}
+
+table {
+    border-collapse: separate; /* Permite o uso de margem entre as linhas */
+    border-spacing: 0 5px; /* Define o espaçamento entre as linhas (vertical) */
+    width: 70%; /* Para que a tabela ocupe toda a largura disponível */
+}
+
+th, td {
+    padding: 7px; /* Espaçamento interno nas células */
+    border: 1px solid #ccc; /* Borda para as células */
+}
+
+tr {
+    background-color: white; /* Cor de fundo para as linhas */
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
+  <script type ="text/javascript" src="js/pessoaPOST.js"></script>
+
+  <title>Novo Monitor</title>
+
+</head>
+<body>
+
+<h1>Novo Usuario</h1>
+
+<h2>Informacoes do usuario</h2>
+Nome:<input id="nome" type="text" value=""><br>
+Email:<input id="email" type="text" value=""><br>
+Senha:<input id="senha" type="text" value=""><br>
+Balanco Geral:<input id="balancoGeral" type="number" value="0"><br>
+Todas Faturas:<input id="todasFaturas" type="number" value="0"><br><br><hr>
+
+<h2>Informacoes da meta</h2>
+
+Titulo Meta:<input id="tituloMeta" type="text" value=""><br>
+Descricao Meta:<input id="descricaoMeta" type="text" value=""><br>
+Valor Meta:<input id="valorMeta" type="number" value=""><br>
+Data Prazo da Meta:<input id="dataPrazo" type="text" value=""><br>
+<button onclick="adicionarMeta()">Adicionar Meta</button><br><br><hr>
+
+
+<h2>Informacoes do fluxo financeiro</h2>
+
+Tipo fluxo:<select id="tipoFluxo">
+  <option value="Despesa">Despesa</option>
+  <option value="Receira">Receita</option>
+</select><br>
+
+Descricao fluxo:<input id="descricaoFluxo" type="text" value=""><br>
+Nome do banco:<input id="nomeBancoFluxo" type="text" value=""><br>
+Valor fluxo:<input id="valorFluxo" type="number" value=""><br>
+Data do fluxo:<input id="dataFluxo" type="text" value=""><br>
+<button onclick="adicionarFluxoFinanceiro()">Adicionar Fluxo</button><br><br><hr>
+
+
+<button onclick="incluirUsuario()">Cadastrar</button>
+<a href="PessoaListar.html">Listar</a>
+</body>
+</html>

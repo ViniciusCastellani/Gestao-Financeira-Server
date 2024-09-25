@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+
+    <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
+    <script type ="text/javascript" src="js/pessoaPUT.js"></script>
+</head>
+<body onload="buscarPessoaAlterar();">
+
+<h1>Alterar Pessoa</h1>
+
+<a href="PessoaListar.html">Listar</a>
+
+<h2>Informacoes do usuario</h2>
+id:<input id="idPessoa" type="text" readonly value=""><br>
+Nome:<input id="nome" type="text" value=""><br>
+Email:<input id="email" type="text" value=""><br>
+Senha:<input id="senha" type="text" value=""><br>
+Balanco Geral:<input id="balancoGeral" type="number" value="0"><br>
+Todas Faturas:<input id="todasFaturas" type="number" value="0"><br><br><hr>
+
+<h2>Informacoes das metas</h2>
+
+<div id="divMeta">
+    Carregando...
+</div>
+
+<hr>
+
+<h2>Informacoes dos fluxos</h2>
+
+<div id="divFluxo">
+    Carregando...
+</div>
+
+<button onclick="alterarPessoa()">Alterar</button>
+</body>
+</html>

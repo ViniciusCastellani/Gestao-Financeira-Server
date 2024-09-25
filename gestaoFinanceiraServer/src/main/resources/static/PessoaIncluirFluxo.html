@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
+    <script type ="text/javascript" src="js/metaFluxoPUT.js"></script>
+</head>
+<body onload="buscarUsuario();">
+
+    <h1>Adicionar Fluxo financeiro</h1>
+
+    <h3>Informacoes do fluxo financeiro</h3>
+
+    Tipo fluxo:<select id="tipoFluxo">
+        <option value="Despesa">Despesa</option>
+        <option value="Receira">Receita</option>
+    </select><br>
+
+    Descricao fluxo:<input id="descricaoFluxo" type="text" value=""><br>
+    Nome do banco:<input id="nomeBancoFluxo" type="text" value=""><br>
+    Valor fluxo:<input id="valorFluxo" type="number" value=""><br>
+    Data do fluxo:<input id="dataFluxo" type="text" value=""><br>
+    <button onclick="adicionarFluxoFinanceiro()">Adicionar Fluxo</button><br><br>
+
+    <button onclick=" redirigirParaVisualizarUsuario()">Visualizar Usuario</button>
+
+
+</body>
+</html>

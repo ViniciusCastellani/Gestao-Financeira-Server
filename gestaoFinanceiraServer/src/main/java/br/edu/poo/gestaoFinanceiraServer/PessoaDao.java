@@ -128,6 +128,39 @@ public class PessoaDao {
         }
     }
 
+
+    public Pessoa inserirFluxo(Pessoa pessoa, int idPessoa) throws SQLException {
+        String sqlInsertFluxo = "INSERT INTO FluxoFinanceiro (codPessoa, tipo, descricao, nomeBanco, valor, data) " +
+                "VALUES (?,?,?,?,?,?)";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             PreparedStatement psFluxo = con.prepareStatement(sqlInsertFluxo, Statement.RETURN_GENERATED_KEYS);) {
+
+            con.setAutoCommit(false);
+
+            List<FluxoFinanceiro> listaFluxos = new ArrayList<>();
+            listaFluxos = pessoa.getListaFluxoFinanceiro();
+
+            FluxoFinanceiro fluxo = listaFluxos.get(listaFluxos.size() - 1);
+
+            psFluxo.setInt(1, idPessoa);
+            psFluxo.setString(2, fluxo.getTipo());
+            psFluxo.setString(3, fluxo.getDescricao());
+            psFluxo.setString(4, fluxo.getNomeBanco());
+            psFluxo.setDouble(5, fluxo.getValor());
+            psFluxo.setString(6, fluxo.getData());
+            psFluxo.executeUpdate();
+
+            ResultSet tableKeys = psFluxo.getGeneratedKeys();
+            tableKeys.next();
+            fluxo.setIdFluxo(tableKeys.getInt(1));
+
+            con.commit();
+            System.out.println("Fluxo inserido com êxito: " + pessoa.getIdPessoa());
+            return pessoa;
+        }
+    }
+
     public Pessoa atualizarPessoa(Pessoa pessoa, int idPessoa) throws SQLException {
         String sqlUpdatePessoa = "UPDATE Pessoa SET nome = ?, email = ?, senha = ? WHERE idPessoa = ?";
 
@@ -166,6 +199,79 @@ public class PessoaDao {
 
             con.commit();
             System.out.println("Pessoa modificada com êxito: " + pessoa.getIdPessoa());
+            return pessoa;
+        }
+    }
+
+
+    public Pessoa atualizarTodasInfoPessoa(Pessoa pessoa, int idPessoa) throws SQLException {
+        String sqlUpdatePessoa = "UPDATE Pessoa SET nome = ?, email = ?, senha = ? WHERE idPessoa = ?";
+        String sqlUpdateBalancoGeral = "UPDATE Pessoa SET balancoGeral = ? WHERE idPessoa = ?";
+        String sqlUpdateTodasFaturas = "UPDATE Pessoa SET todasFaturas = ? WHERE idPessoa = ?";
+        String sqlUpdateMeta = "UPDATE Meta SET tituloMeta = ?, descricaoMeta = ?, valorMeta = ?, dataPrazo = ? WHERE idMeta = ? AND codPessoa = ?";
+        String sqlUpdateFluxo = "UPDATE FluxoFinanceiro SET tipo = ?, descricao = ?, nomeBanco = ?, valor = ?, data = ? WHERE idFluxo = ? AND codPessoa = ?";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             PreparedStatement psPessoa = con.prepareStatement(sqlUpdatePessoa);
+             PreparedStatement psBalancoGeral = con.prepareStatement(sqlUpdateBalancoGeral);
+             PreparedStatement psTodasFaturas = con.prepareStatement(sqlUpdateTodasFaturas);
+             PreparedStatement psUpdateMeta = con.prepareStatement(sqlUpdateMeta);
+             PreparedStatement psUpdateFluxo = con.prepareStatement(sqlUpdateFluxo)) {
+
+            con.setAutoCommit(false);
+
+            // Atualizando informações da pessoa
+            psPessoa.setString(1, pessoa.getNome());
+            psPessoa.setString(2, pessoa.getEmail());
+            psPessoa.setString(3, pessoa.getSenha());
+            psPessoa.setInt(4, idPessoa);
+            psPessoa.executeUpdate();
+
+            String balancoGeralST = String.valueOf(pessoa.getBalancoGeral());
+            String todasFaturasST = String.valueOf(pessoa.getTodasFaturas());
+
+            if (!balancoGeralST.isEmpty()) {
+                psBalancoGeral.setDouble(1, pessoa.getBalancoGeral());
+                psBalancoGeral.setInt(2, idPessoa);
+                psBalancoGeral.executeUpdate();
+            }
+
+            // Atualizando todasFaturas
+            if (!todasFaturasST.isEmpty()) {
+                psTodasFaturas.setDouble(1, pessoa.getTodasFaturas());
+                psTodasFaturas.setInt(2, idPessoa);
+                psTodasFaturas.executeUpdate();
+            }
+
+            // Atualizando metas
+            if (pessoa.getListaMetas() != null) {
+                for (Meta meta : pessoa.getListaMetas()) {
+                    psUpdateMeta.setString(1, meta.getTituloMeta());
+                    psUpdateMeta.setString(2, meta.getDescricaoMeta());
+                    psUpdateMeta.setDouble(3, meta.getValorMeta());
+                    psUpdateMeta.setString(4, meta.getDataPrazo());
+                    psUpdateMeta.setInt(5, meta.getIdMeta()); // ID da meta
+                    psUpdateMeta.setInt(6, idPessoa); // ID da pessoa
+                    psUpdateMeta.executeUpdate();
+                }
+            }
+
+            // Atualizando fluxos
+            if (pessoa.getListaFluxoFinanceiro() != null) {
+                for (FluxoFinanceiro fluxo : pessoa.getListaFluxoFinanceiro()) {
+                    psUpdateFluxo.setString(1, fluxo.getTipo());
+                    psUpdateFluxo.setString(2, fluxo.getDescricao());
+                    psUpdateFluxo.setString(3, fluxo.getNomeBanco());
+                    psUpdateFluxo.setDouble(4, fluxo.getValor());
+                    psUpdateFluxo.setString(5, fluxo.getData());
+                    psUpdateFluxo.setInt(6, fluxo.getIdFluxo()); // ID do fluxo
+                    psUpdateFluxo.setInt(7, idPessoa); // ID da pessoa
+                    psUpdateFluxo.executeUpdate();
+                }
+            }
+
+            con.commit();
+            System.out.println("Pessoa, suas metas e fluxos modificados com êxito: " + idPessoa);
             return pessoa;
         }
     }
@@ -297,6 +403,60 @@ public class PessoaDao {
                 listaPessoas.add(pessoa);
             }
             return listaPessoas;
+        }
+    }
+
+    public boolean deletarPessoa(int id) throws Exception {
+        String sqlDeletePessoa = "DELETE FROM Pessoa WHERE idPessoa = ?";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             PreparedStatement psPessoa = con.prepareStatement(sqlDeletePessoa);) {
+
+            psPessoa.setInt(1,id);
+            int result = psPessoa.executeUpdate();
+
+            if (result == 1){
+                return true;
+            }
+
+            throw new Exception("Id não encontrado na tabela");
+        }
+
+    }
+
+    public boolean deletarMeta(int idPessoa, int idMeta) throws Exception {
+        String sqlDeleteMeta = "DELETE FROM META WHERE codPessoa = ? AND idMeta = ?";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             PreparedStatement psMeta = con.prepareStatement(sqlDeleteMeta);) {
+
+            psMeta.setInt(1,idPessoa);
+            psMeta.setInt(2,idMeta);
+            int result = psMeta.executeUpdate();
+
+            if (result == 1){
+                return true;
+            }
+
+            throw new Exception("Id não encontrado na tabela");
+        }
+    }
+
+    public boolean deletarFluxo(int idPessoa, int idFluxo) throws Exception {
+        String sqlDeleteMeta = "DELETE FROM FLUXOFINANCEIRO WHERE codPessoa = ? AND idFluxo = ?";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             PreparedStatement psMeta = con.prepareStatement(sqlDeleteMeta);) {
+
+            psMeta.setInt(1,idPessoa);
+            psMeta.setInt(2,idFluxo);
+            int result = psMeta.executeUpdate();
+
+            if (result == 1){
+                return true;
+            }
+
+            throw new Exception("Id não encontrado na tabela");
         }
     }
 }
