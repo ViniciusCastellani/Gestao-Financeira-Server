@@ -70,7 +70,7 @@ function atualizarMetasUserTela() {
         htmlMetas += 'Titulo:<input id="tituloMeta' + i + '" type="text" value="' + metasUser[i].tituloMeta + '"><br>'; // Set value
         htmlMetas += 'Descricao:<input id="descricaoMeta' + i + '" type="text" value="' + metasUser[i].descricaoMeta + '"><br>'; // Set value
         htmlMetas += 'Valor:<input id="valorMeta' + i + '" type="number" value="' + metasUser[i].valorMeta + '"><br>'; // Set value
-        htmlMetas += 'Prazo da Meta:<input id="dataPrazo' + i + '" type="text" value="' + metasUser[i].dataPrazo + '"><br>'; // Set value
+        htmlMetas += 'Prazo da Meta:<input id="dataPrazo' + i + '" type="date" value="' + metasUser[i].dataPrazo + '"><br>'; // Set value
         htmlMetas += '<br><br>';
     }
 
@@ -99,7 +99,7 @@ function atualizarFluxoUserTela() {
         htmlFluxo += 'Descricao:<input id="descricaoFluxo' + i + '" type="text" value="' + fluxoFinanceiro[i].descricao + '"><br>'; // Set value
         htmlFluxo += 'Nome Banco:<input id="nomeBanco' + i + '" type="text" value="' + fluxoFinanceiro[i].nomeBanco + '"><br>'; // Set value
         htmlFluxo += 'Valor fluxo:<input id="valorFluxo' + i + '" type="number" value="' + fluxoFinanceiro[i].valor + '"><br>'; // Set value
-        htmlFluxo += 'Data:<input id="dataFluxo' + i + '" type="text" value="' + fluxoFinanceiro[i].data + '"><br>'; // Set value
+        htmlFluxo += 'Data:<input id="dataFluxo' + i + '" type="date" value="' + fluxoFinanceiro[i].data + '"><br>'; // Set value
         htmlFluxo += '<br><br>';
     }
 

@@ -1,4 +1,4 @@
-package br.edu.poo.gestaoFinanceiraServer;
+package br.edu.poo.gestaoFinanceiraServer.Meta;
 
 import lombok.Data;
 

@@ -1,5 +1,7 @@
-package br.edu.poo.gestaoFinanceiraServer;
+package br.edu.poo.gestaoFinanceiraServer.Pessoa;
 
+import br.edu.poo.gestaoFinanceiraServer.FluxoFinanceiro.FluxoFinanceiro;
+import br.edu.poo.gestaoFinanceiraServer.Meta.Meta;
 import lombok.Data;
 import java.util.List;
 

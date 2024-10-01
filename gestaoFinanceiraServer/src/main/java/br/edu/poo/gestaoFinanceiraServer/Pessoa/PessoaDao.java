@@ -1,6 +1,8 @@
-package br.edu.poo.gestaoFinanceiraServer;
+package br.edu.poo.gestaoFinanceiraServer.Pessoa;
 
 
+import br.edu.poo.gestaoFinanceiraServer.FluxoFinanceiro.FluxoFinanceiro;
+import br.edu.poo.gestaoFinanceiraServer.Meta.Meta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -97,69 +99,7 @@ public class PessoaDao {
     }
 
 
-    public Pessoa inserirMeta(Pessoa pessoa, int idPessoa) throws SQLException {
-        String sqlInsertMeta = "INSERT INTO Meta (codPessoa, tituloMeta, descricaoMeta, valorMeta, dataPrazo) " +
-                "VALUES (?,?,?,?,?)";
 
-        try (Connection con = jdbcTemplate.getDataSource().getConnection();
-             PreparedStatement psMeta = con.prepareStatement(sqlInsertMeta, Statement.RETURN_GENERATED_KEYS);) {
-
-            con.setAutoCommit(false);
-
-            List<Meta> listaMetas = new ArrayList<>();
-            listaMetas = pessoa.getListaMetas();
-
-            Meta meta = listaMetas.get(listaMetas.size() - 1);
-
-            psMeta.setInt(1, idPessoa);
-            psMeta.setString(2,meta.getTituloMeta());
-            psMeta.setString(3, meta.getDescricaoMeta());
-            psMeta.setDouble(4, meta.getValorMeta());
-            psMeta.setString(5, meta.getDataPrazo());
-            psMeta.executeUpdate();
-
-            ResultSet tableKeys = psMeta.getGeneratedKeys();
-            tableKeys.next();
-            meta.setIdMeta(tableKeys.getInt(1));
-
-            con.commit();
-            System.out.println("Meta inserida com êxito: " + pessoa.getIdPessoa());
-            return pessoa;
-        }
-    }
-
-
-    public Pessoa inserirFluxo(Pessoa pessoa, int idPessoa) throws SQLException {
-        String sqlInsertFluxo = "INSERT INTO FluxoFinanceiro (codPessoa, tipo, descricao, nomeBanco, valor, data) " +
-                "VALUES (?,?,?,?,?,?)";
-
-        try (Connection con = jdbcTemplate.getDataSource().getConnection();
-             PreparedStatement psFluxo = con.prepareStatement(sqlInsertFluxo, Statement.RETURN_GENERATED_KEYS);) {
-
-            con.setAutoCommit(false);
-
-            List<FluxoFinanceiro> listaFluxos = new ArrayList<>();
-            listaFluxos = pessoa.getListaFluxoFinanceiro();
-
-            FluxoFinanceiro fluxo = listaFluxos.get(listaFluxos.size() - 1);
-
-            psFluxo.setInt(1, idPessoa);
-            psFluxo.setString(2, fluxo.getTipo());
-            psFluxo.setString(3, fluxo.getDescricao());
-            psFluxo.setString(4, fluxo.getNomeBanco());
-            psFluxo.setDouble(5, fluxo.getValor());
-            psFluxo.setString(6, fluxo.getData());
-            psFluxo.executeUpdate();
-
-            ResultSet tableKeys = psFluxo.getGeneratedKeys();
-            tableKeys.next();
-            fluxo.setIdFluxo(tableKeys.getInt(1));
-
-            con.commit();
-            System.out.println("Fluxo inserido com êxito: " + pessoa.getIdPessoa());
-            return pessoa;
-        }
-    }
 
     public Pessoa atualizarPessoa(Pessoa pessoa, int idPessoa) throws SQLException {
         String sqlUpdatePessoa = "UPDATE Pessoa SET nome = ?, email = ?, senha = ? WHERE idPessoa = ?";
@@ -414,43 +354,6 @@ public class PessoaDao {
 
             psPessoa.setInt(1,id);
             int result = psPessoa.executeUpdate();
-
-            if (result == 1){
-                return true;
-            }
-
-            throw new Exception("Id não encontrado na tabela");
-        }
-
-    }
-
-    public boolean deletarMeta(int idPessoa, int idMeta) throws Exception {
-        String sqlDeleteMeta = "DELETE FROM META WHERE codPessoa = ? AND idMeta = ?";
-
-        try (Connection con = jdbcTemplate.getDataSource().getConnection();
-             PreparedStatement psMeta = con.prepareStatement(sqlDeleteMeta);) {
-
-            psMeta.setInt(1,idPessoa);
-            psMeta.setInt(2,idMeta);
-            int result = psMeta.executeUpdate();
-
-            if (result == 1){
-                return true;
-            }
-
-            throw new Exception("Id não encontrado na tabela");
-        }
-    }
-
-    public boolean deletarFluxo(int idPessoa, int idFluxo) throws Exception {
-        String sqlDeleteMeta = "DELETE FROM FLUXOFINANCEIRO WHERE codPessoa = ? AND idFluxo = ?";
-
-        try (Connection con = jdbcTemplate.getDataSource().getConnection();
-             PreparedStatement psMeta = con.prepareStatement(sqlDeleteMeta);) {
-
-            psMeta.setInt(1,idPessoa);
-            psMeta.setInt(2,idFluxo);
-            int result = psMeta.executeUpdate();
 
             if (result == 1){
                 return true;

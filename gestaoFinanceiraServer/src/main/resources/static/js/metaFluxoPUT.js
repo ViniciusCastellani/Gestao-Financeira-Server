@@ -60,12 +60,20 @@ function adicionarMeta() {
     }
 
     let novaMeta = {
-        idMeta: pessoa.listaMetas[pessoa.listaMetas.length - 1].idMeta + 1,
+        idMeta: 0,
         tituloMeta: document.getElementById('tituloMeta').value,
         descricaoMeta: document.getElementById('descricaoMeta').value,
         valorMeta: parseFloat(document.getElementById('valorMeta').value),
         dataPrazo: document.getElementById('dataPrazo').value
     };
+
+    if (pessoa.listaMetas.length > 0){
+        novaMeta.idMeta = pessoa.listaMetas[pessoa.listaMetas.length - 1].idMeta + 1;
+    }
+    else {
+        novaMeta.idMeta = 1;
+    }
+
 
     pessoa.listaMetas.push(novaMeta);
 
@@ -95,7 +103,7 @@ function adicionarFluxoFinanceiro() {
     }
 
     let novoFluxo = {
-        idFluxo: pessoa.listaFluxoFinanceiro[pessoa.listaFluxoFinanceiro.length - 1].idFluxo + 1,
+        idFluxo: 0,
         tipo: document.getElementById('tipoFluxo').value,
         descricao: document.getElementById('descricaoFluxo').value,
         nomeBanco: document.getElementById('nomeBancoFluxo').value,
@@ -103,10 +111,15 @@ function adicionarFluxoFinanceiro() {
         data: document.getElementById('dataFluxo').value
     };
 
+    if (pessoa.listaFluxoFinanceiro.length > 0){
+            novoFluxo.idFluxo = pessoa.listaMetas[pessoa.listaMetas.length - 1].idMeta + 1;
+    } else {
+          novoFluxo.idFluxo = 1;
+    }
+
     pessoa.listaFluxoFinanceiro.push(novoFluxo);
 
     // Limpar campos
-    document.getElementById('tipoFluxo').value = '';
     document.getElementById('descricaoFluxo').value = '';
     document.getElementById('nomeBancoFluxo').value = '';
     document.getElementById('valorFluxo').value = '';

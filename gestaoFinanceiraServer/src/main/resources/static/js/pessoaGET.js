@@ -43,7 +43,7 @@ function deletarUsuario(idPessoa) {
 
 
 function deletarMeta(idPessoa, idMeta) {
-    fetch("http://localhost:8081/deletar/pessoa/" + idPessoa + "/meta/" + idMeta, {
+    fetch("http://localhost:8081/deletar/meta/" + idMeta + "/pessoa/" + idPessoa, {
         method: "DELETE",
     })
     .then(res => res.text())
@@ -53,7 +53,7 @@ function deletarMeta(idPessoa, idMeta) {
 
 
 function deletarFluxo(idPessoa, idFluxo) {
-    fetch("http://localhost:8081/deletar/pessoa/" + idPessoa + "/fluxo/" + idFluxo, {
+    fetch("http://localhost:8081/deletar/fluxo/" + idFluxo + "/pessoa/" + idPessoa, {
         method: "DELETE",
     })
     .then(res => res.text())
@@ -81,13 +81,15 @@ function atualizarTabelaLista(userList) {
 function atualizarTabelaUsuario(userList) {
     let tabelaUsuarios = "";
 
-    if (!userList && userList.length === 0){
+    if (!userList){
         return;
     }
 
+     tabelaUsuarios = "<table>";
+     tabelaUsuarios += "<tr class='header'><th>ID</th><th>Nome</th><th>Email</th><th>Senha</th><th>Balanco geral</th><th>Todas faturas</th></tr>";
+
+
     for (var i = 0; i < userList.length; i++) {
-        tabelaUsuarios = "<table>";
-        tabelaUsuarios += "<tr class='header'><th>ID</th><th>Nome</th><th>Email</th><th>Senha</th><th>Balanco geral</th><th>Todas faturas</th></tr>";
 
         var user = userList[i];
         var linha = "<tr>" +
@@ -204,4 +206,3 @@ function redirigirParaInclusaoMeta() {
         alert("ID do usuário não encontrado.");
     }
 }
-
