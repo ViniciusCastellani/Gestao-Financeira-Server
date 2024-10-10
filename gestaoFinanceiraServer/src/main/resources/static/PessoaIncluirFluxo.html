@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
     <title>Incluir Fluxo</title>
-    <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
-    <script type ="text/javascript" src="js/metaFluxoPUT.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pessoa.css"/>
+    <script type="text/javascript" src="js/metaFluxoPUT.js"></script>
 </head>
 <body onload="buscarUsuario();">
 
-    <h1>Adicionar Fluxo financeiro</h1>
+<div class="container">
+    <h1>Adicionar Fluxo Financeiro</h1>
 
-    <h3>Informacoes do fluxo financeiro</h3>
+    <h3>Informações do Fluxo Financeiro</h3>
+    <form>
+        <label for="tipoFluxo">Tipo Fluxo:</label>
+        <select id="tipoFluxo">
+            <option value="Despesa">Despesa</option>
+            <option value="Receita">Receita</option>
+        </select>
 
-    Tipo fluxo:<select id="tipoFluxo">
-        <option value="Despesa">Despesa</option>
-        <option value="Receira">Receita</option>
-    </select><br>
+        <label for="descricaoFluxo">Descrição Fluxo:</label>
+        <input id="descricaoFluxo" type="text" value="">
 
-    Descricao fluxo:<input id="descricaoFluxo" type="text" value=""><br>
-    Nome do banco:<input id="nomeBancoFluxo" type="text" value=""><br>
-    Valor fluxo:<input id="valorFluxo" type="number" value=""><br>
-    Data do fluxo:<input id="dataFluxo" type="date" value=""><br>
-    <button onclick="adicionarFluxoFinanceiro()">Adicionar Fluxo</button><br><br>
+        <label for="nomeBancoFluxo">Nome do Banco:</label>
+        <input id="nomeBancoFluxo" type="text" value="">
 
-    <button onclick=" redirigirParaVisualizarUsuario()">Visualizar Usuario</button>
+        <label for="valorFluxo">Valor Fluxo:</label>
+        <input id="valorFluxo" type="number" value="">
 
+        <label for="dataFluxo">Data do Fluxo:</label>
+        <input id="dataFluxo" type="date" value="">
+
+        <button type="button" onclick="adicionarFluxoFinanceiro()">Adicionar Fluxo</button>
+    </form>
+
+    <button onclick="redirigirParaVisualizarUsuario()">Visualizar Usuário</button>
+</div>
 
 </body>
 </html>

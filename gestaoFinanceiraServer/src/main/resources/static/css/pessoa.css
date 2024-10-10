@@ -1,25 +1,156 @@
-@charset "ISO-8859-1";
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
 
 h1 {
-	color: red;
+    font-size: 2em;
+    margin-top: 0;
 }
 
-.header th {
-    margin-bottom: 10px; /* Ajuste o valor conforme necessário */
-    padding-bottom: 10px; /* Espaçamento interno */
+h2 {
+    font-size: 1.5em;
+    margin-top: 40px;
 }
 
+h3 {
+    font-size: 1.2em;
+    margin-top: 30px;
+}
+
+/* Links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+input[readonly] {
+    background-color: #e9ecef;
+}
+
+button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Table Styling */
 table {
-    border-collapse: separate; /* Permite o uso de margem entre as linhas */
-    border-spacing: 0 5px; /* Define o espaçamento entre as linhas (vertical) */
-    width: 70%; /* Para que a tabela ocupe toda a largura disponível */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
-    padding: 7px; /* Espaçamento interno nas células */
-    border: 1px solid #ccc; /* Borda para as células */
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
-tr {
-    background-color: white; /* Cor de fundo para as linhas */
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+}
+
+table td a {
+    color: #007BFF;
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+
+/* Aligning action buttons inside tables */
+td.actions {
+    text-align: right;
+}
+
+.actions button {
+    margin-left: 10px;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 40px 0;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+body > * {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        max-width: 100%;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
 }

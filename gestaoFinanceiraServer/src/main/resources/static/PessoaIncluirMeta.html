@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
     <title>Incluir Meta</title>
-    <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
-    <script type ="text/javascript" src="js/metaFluxoPUT.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pessoa.css"/>
+    <script type="text/javascript" src="js/metaFluxoPUT.js"></script>
 </head>
 <body onload="buscarUsuario();">
-    <h1>Adicionar meta</h1>
 
-    <h3>Informacoes da meta</h3>
+<div class="container">
+    <h1>Adicionar Meta</h1>
 
-    Titulo Meta:<input id="tituloMeta" type="text" value=""><br>
-    Descricao Meta:<input id="descricaoMeta" type="text" value=""><br>
-    Valor Meta:<input id="valorMeta" type="number" value=""><br>
-    Data Prazo da Meta:<input id="dataPrazo" type="date" value=""><br>
-    <button onclick="adicionarMeta()">Adicionar Meta</button><br><br>
+    <h3>Informações da Meta</h3>
+    <form>
+        <label for="tituloMeta">Título Meta:</label>
+        <input id="tituloMeta" type="text" value="">
 
-    <button onclick=" redirigirParaVisualizarUsuario()">Visualizar Usuario</button>
+        <label for="descricaoMeta">Descrição Meta:</label>
+        <input id="descricaoMeta" type="text" value="">
+
+        <label for="valorMeta">Valor Meta:</label>
+        <input id="valorMeta" type="number" value="">
+
+        <label for="dataPrazo">Data Prazo da Meta:</label>
+        <input id="dataPrazo" type="date" value="">
+
+        <button type="button" onclick="adicionarMeta()">Adicionar Meta</button>
+    </form>
+
+    <button onclick="redirigirParaVisualizarUsuario()">Visualizar Usuário</button>
+</div>
 
 </body>
 </html>

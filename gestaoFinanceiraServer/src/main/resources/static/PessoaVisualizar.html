@@ -3,22 +3,23 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Visualizar Pessoa</title>
-
-    <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
-    <script type ="text/javascript" src="js/pessoaGET.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pessoa.css"/>
+    <script type="text/javascript" src="js/pessoaGET.js"></script>
 </head>
 <body onload="buscarUsuario();">
 
-<h1>Visualizar Usuario</h1>
+<div class="container">
+    <h1>Visualizar Usuário</h1>
+    <a href="PessoaListar.html">Listar</a>
 
-<a href="PessoaListar.html">Listar</a><br><br>
+    <div class="button-group">
+        <button onclick="redirigirParaInclusaoFluxo()">Incluir Fluxo Financeiro</button>
+        <button onclick="redirigirParaInclusaoMeta()">Incluir Meta</button>
+    </div>
 
-<button onclick="redirigirParaInclusaoFluxo()">Incluir Fluxo Financeiro</button>
-<button onclick="redirigirParaInclusaoMeta()">Incluir Meta</button>
-
-
-<div id="divPrincipal">
-    Carregando...
+    <div id="divPrincipal">
+        Carregando...
+    </div>
 </div>
 
 </body>

@@ -3,38 +3,48 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Alterar Pessoa</title>
-
-    <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
-    <script type ="text/javascript" src="js/pessoaPUT.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pessoa.css"/>
+    <script type="text/javascript" src="js/pessoaPUT.js"></script>
 </head>
 <body onload="buscarPessoaAlterar();">
 
-<h1>Alterar Pessoa</h1>
+<div class="container">
+    <h1>Alterar Pessoa</h1>
+    <a href="PessoaListar.html">Listar</a>
 
-<a href="PessoaListar.html">Listar</a>
+    <h2>Informações do Usuário</h2>
+    <form>
+        <label for="idPessoa">ID:</label>
+        <input id="idPessoa" type="text" readonly value="">
 
-<h2>Informacoes do usuario</h2>
-id:<input id="idPessoa" type="text" readonly value=""><br>
-Nome:<input id="nome" type="text" value=""><br>
-Email:<input id="email" type="text" value=""><br>
-Senha:<input id="senha" type="text" value=""><br>
-Balanco Geral:<input id="balancoGeral" type="number" value="0"><br>
-Todas Faturas:<input id="todasFaturas" type="number" value="0"><br><br><hr>
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" value="">
 
-<h2>Informacoes das metas</h2>
+        <label for="email">Email:</label>
+        <input id="email" type="text" value="">
 
-<div id="divMeta">
-    Carregando...
+        <label for="senha">Senha:</label>
+        <input id="senha" type="text" value="">
+
+        <label for="balancoGeral">Balanço Geral:</label>
+        <input id="balancoGeral" type="number" value="0">
+
+        <label for="todasFaturas">Todas Faturas:</label>
+        <input id="todasFaturas" type="number" value="0">
+    </form>
+
+    <h2>Informações das Metas</h2>
+    <div id="divMeta">
+        Carregando...
+    </div>
+
+    <h2>Informações dos Fluxos</h2>
+    <div id="divFluxo">
+        Carregando...
+    </div>
+
+    <button onclick="alterarPessoa()">Alterar</button>
 </div>
 
-<hr>
-
-<h2>Informacoes dos fluxos</h2>
-
-<div id="divFluxo">
-    Carregando...
-</div>
-
-<button onclick="alterarPessoa()">Alterar</button>
 </body>
 </html>

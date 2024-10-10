@@ -1,52 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <link rel ="stylesheet" type ="text/css" href="css/pessoa.css"/>
-  <script type ="text/javascript" src="js/pessoaPOST.js"></script>
-
+  <meta charset="ISO-8859-1">
   <title>Nova Pessoa</title>
-
+  <link rel="stylesheet" type="text/css" href="css/pessoa.css"/>
+  <script type="text/javascript" src="js/pessoaPOST.js"></script>
 </head>
 <body>
 
-<h1>Novo Usuario</h1>
+<div class="container">
+  <h1>Novo Usuário</h1>
+  <a href="PessoaListar.html">Listar</a>
 
-<h2>Informacoes do usuario</h2>
-Nome:<input id="nome" type="text" value=""><br>
-Email:<input id="email" type="text" value=""><br>
-Senha:<input id="senha" type="text" value=""><br>
-Balanco Geral:<input id="balancoGeral" type="number" value="0"><br>
-Todas Faturas:<input id="todasFaturas" type="number" value="0"><br><br><hr>
+  <h2>Informações do Usuário</h2>
+  <form>
+    <label for="nome">Nome:</label>
+    <input id="nome" type="text" value="">
 
-<h2>Informacoes da meta</h2>
+    <label for="email">Email:</label>
+    <input id="email" type="text" value="">
 
-Titulo Meta:<input id="tituloMeta" type="text" value=""><br>
-Descricao Meta:<input id="descricaoMeta" type="text" value=""><br>
-Valor Meta:<input id="valorMeta" type="number" value=""><br>
-Data Prazo da Meta:<input id="dataPrazo" type="date" value=""><br>
-<button onclick="adicionarMeta()">Adicionar Meta</button><br><br><hr>
+    <label for="senha">Senha:</label>
+    <input id="senha" type="text" value="">
 
+    <label for="balancoGeral">Balanço Geral:</label>
+    <input id="balancoGeral" type="number" value="0">
 
-<h2>Informacoes do fluxo financeiro</h2>
+    <label for="todasFaturas">Todas Faturas:</label>
+    <input id="todasFaturas" type="number" value="0">
+  </form>
 
-Tipo fluxo:<select id="tipoFluxo">
-  <option value="Despesa">Despesa</option>
-  <option value="Receira">Receita</option>
-</select><br>
+  <h2>Informações da Meta</h2>
+  <form>
+    <label for="tituloMeta">Título Meta:</label>
+    <input id="tituloMeta" type="text" value="">
 
-Descricao fluxo:<input id="descricaoFluxo" type="text" value=""><br>
-Nome do banco:<input id="nomeBancoFluxo" type="text" value=""><br>
-Valor fluxo:<input id="valorFluxo" type="number" value=""><br>
-Data do fluxo:<input id="dataFluxo" type="date" value=""><br>
-<button onclick="adicionarFluxoFinanceiro()">Adicionar Fluxo</button><br><br><hr>
+    <label for="descricaoMeta">Descrição Meta:</label>
+    <input id="descricaoMeta" type="text" value="">
 
+    <label for="valorMeta">Valor Meta:</label>
+    <input id="valorMeta" type="number" value="">
 
-<button onclick="incluirUsuario()">Cadastrar</button>
-<a href="PessoaListar.html">Listar</a>
+    <label for="dataPrazo">Data Prazo da Meta:</label>
+    <input id="dataPrazo" type="date" value="">
+
+    <button type="button" onclick="adicionarMeta()">Adicionar Meta</button>
+  </form>
+
+  <h2>Informações do Fluxo Financeiro</h2>
+  <form>
+    <label for="tipoFluxo">Tipo Fluxo:</label>
+    <select id="tipoFluxo">
+      <option value="Despesa">Despesa</option>
+      <option value="Receita">Receita</option>
+    </select>
+
+    <label for="descricaoFluxo">Descrição Fluxo:</label>
+    <input id="descricaoFluxo" type="text" value="">
+
+    <label for="nomeBancoFluxo">Nome do Banco:</label>
+    <input id="nomeBancoFluxo" type="text" value="">
+
+    <label for="valorFluxo">Valor Fluxo:</label>
+    <input id="valorFluxo" type="number" value="">
+
+    <label for="dataFluxo">Data do Fluxo:</label>
+    <input id="dataFluxo" type="date" value="">
+
+    <button type="button" onclick="adicionarFluxoFinanceiro()">Adicionar Fluxo</button>
+  </form>
+
+  <button onclick="incluirUsuario()">Cadastrar</button>
+</div>
+
 </body>
 </html>
